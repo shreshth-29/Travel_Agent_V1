@@ -37,10 +37,27 @@ def run_agentic_flow(trip_details: dict) -> dict:
     )
 
     print("## Initiating Travel Planning Process...\n")
-    result = project_crew.kickoff(inputs=trip_details)
+    
+    # result = project_crew.kickoff(inputs=trip_details)
 
-    print("\n## Travel Planning Complete!")
-    return {"result": result}
+    # print("\n## Travel Planning Complete!")
+    # return {"result": result}
+
+    try:
+        result = project_crew.kickoff(inputs=trip_details)
+        print("\n## Travel Planning Complete!")
+        return {"result": result}
+
+    except Exception as e:
+        print(f"Agentic flow failed: {e}")
+        # Default fallback response
+        return { "result": 
+            "⚠️ Travel plan couldn't be generated due to an internal error (likely Gemini API rate limit). "
+            "Here's a quick fallback suggestion: Visit Thailand for 7 days – explore Bangkok and Krabi."
+               }
+
+    
+
 
 
 # ✅ Optional: Keep this for CLI testing
