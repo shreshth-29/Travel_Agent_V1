@@ -1,5 +1,7 @@
 # Travel Agent
 
+Repository created in July 2025. Reorganized and cleaned up in October 2026 (file structure and README only, the code is as it was written at the time, except where the README notes a fix).
+
 A multi-agent travel planner. Given a structured trip request (origin, destination, dates, budget, interests, travel style), it searches the web for flight and hotel deals, picks a recommendation matched to the traveler, sketches a day-by-day itinerary, writes a short report with a cost estimate, and has a supervisor step check the result. The same five steps are implemented twice: once as a CrewAI hierarchical crew and once as a LangGraph state graph, behind one shared interface. A FastAPI server and a Streamlit form sit on top and can switch between the two backends with an environment variable. The model is Gemini 2.0 Flash through `langchain-google-genai`, and web search goes through Serper.
 
 ## Inputs and outputs
