@@ -1,17 +1,15 @@
-# Dockerfile
 FROM python:3.11.9
 
-# Set working directory
 WORKDIR /app
 
-# Copy files
-COPY . /app
-
-# Install dependencies
+COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port
+COPY . /app
+
+# Set AGENT_BACKEND=langgraph at run time to use the LangGraph backend.
+ENV AGENT_BACKEND=crewai
+
 EXPOSE 8000
 
-# Start FastAPI server
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,18 +1,19 @@
-# main.py
-# Orchestrates the AI travel agent crew to generate a travel plan
+# crewai_version/archive/main_legacy.py
+# The original script-style entry point, kept for reference. It runs the crew
+# at import time with a hard-coded demo request. Use the top-level run.py instead.
 
 import os
 from dotenv import load_dotenv
 from crewai import Crew, Process
 
 # IMPORTANT: Load environment variables FIRST to ensure they are available for tool initialization.
-env_file = "travelagent.env"
-load_dotenv(dotenv_path=env_file)
+load_dotenv(".env")
+load_dotenv("travelagent.env")
 
 # Import agents and tasks from their respective files.
 # LLM initialization and assignment are now handled within agents.py.
-from agents import deal_researcher, recommendation_agent, travel_planner, itinerary_generator, supervisor
-from tasks import research_deals_task, generate_recommendations_task, plan_itinerary_task, generate_report_task, validate_plan_task
+from crewai_version.agents import deal_researcher, recommendation_agent, travel_planner, itinerary_generator, supervisor
+from crewai_version.tasks import research_deals_task, generate_recommendations_task, plan_itinerary_task, generate_report_task, validate_plan_task
 
 # User input for the travel demo.
 # These details will be passed to the tasks for dynamic processing.
